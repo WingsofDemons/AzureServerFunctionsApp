@@ -18,7 +18,7 @@ namespace VmGameServerStart
         {
             _logger = logger;
             // Använder Managed Identity Credential för autentisering
-            _armClient = new ArmClient(new AzureCliCredential());
+            _armClient = new ArmClient(new ManagedIdentityCredential());
         }
 
         [Function("HttpTriggerVmStart")]
