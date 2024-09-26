@@ -22,9 +22,33 @@ namespace VmGameServerStart
         }
 
         [Function("HttpTriggerVmStart")]
-        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
+        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
+
+            // Läs formuläret asynkront
+            var form = await req.ReadFormAsync();
+
+            // Hämta api_key och kontrollera om den finns
+            string? apiKey = form["api_key"].ToString(); // Använd ToString() för att säkerställa att vi får en sträng
+
+            // Hämta den giltiga API-nyckeln från miljövariabler
+            string? validApiKey = Environment.GetEnvironmentVariable("VALID_API_KEY");
+
+
+            // Kontrollera om den giltiga API-nyckeln är null
+            if (validApiKey == null)
+            {
+                _logger.LogError("API key environment variable is not set.");
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError); // Eller ett lämpligt felmeddelande
+            }
+
+            // Kontrollera om apiKey är null eller tom
+            if (string.IsNullOrEmpty(apiKey) || apiKey != validApiKey)
+            {
+                // Returnera 401 Unauthorized om API-nyckeln är felaktig
+                return new UnauthorizedResult();
+            }
 
             var subscriptionId = "ca5b2e2b-60d8-4085-b98c-19ed3102bc83";
             var resourceGroupName = "r.gameserver_group";
@@ -46,6 +70,7 @@ namespace VmGameServerStart
                 return new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
         }
+
     }
 }
 
