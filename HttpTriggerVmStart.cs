@@ -50,9 +50,10 @@ namespace VmGameServerStart
                 return new UnauthorizedResult();
             }
 
-            var subscriptionId = "ca5b2e2b-60d8-4085-b98c-19ed3102bc83";
-            var resourceGroupName = "r.gameserver_group";
-            var vmName = "r.gameserver";
+            var subscriptionId = Environment.GetEnvironmentVariable("SUBSCRIPTION_ID");
+            var resourceGroupName = Environment.GetEnvironmentVariable("RESOURCE_GROUP_NAME");
+            var vmName = Environment.GetEnvironmentVariable("VM_NAME");
+
 
             // Skapar resurs-ID för den virtuella maskinen
             var vmResourceId = VirtualMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmName);
