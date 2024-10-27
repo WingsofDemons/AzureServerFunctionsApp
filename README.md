@@ -45,9 +45,9 @@ echo "Inga spelare online. Stänger ner Arma 3-servern..."
 # Stäng ner servern
 screen -S $SCREEN_NAME -X quit
 
-
+```
 ## Script 2
-
+```Bash
 #!/bin/bash
 
 # Starta en screen-session för Arma 3-servern
@@ -56,9 +56,9 @@ screen -S armaserver -dm bash -c '
     MODS=$(ls -d @* | tr "\n" ";")  # Hitta alla mods och formatera dem med semikolon
     ./arma3server_x64 -config=server.cfg -mod="$MODS"
 '
-
+```
 ## Script 3
-
+```bash
 
 #!/bin/bash
 sleep 30
@@ -76,9 +76,9 @@ else
     echo "Minecraft server started in screen session '$SCREEN_NAME'."
 fi
 sleep 10
-
+```
 ## Script 4
-
+```bash
 #!/bin/bash
 
 # Ange sökvägen till din Minecraft server
@@ -110,9 +110,9 @@ if screen -list | grep -q "$SCREEN_NAME"; then
 else
     echo "Minecraft server is not running."
 fi
-
+```
 ## Script 5
-
+```bash
 #!/bin/bash
 
 # Namn på screen-sessioner
