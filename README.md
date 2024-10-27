@@ -6,7 +6,6 @@ A game server that can start your vm and start the servers from just a webbsite.
 ## Script
 
 ### Script 1
-## Kollar spelare på arma servern
 
 #!/bin/bash
 
@@ -48,7 +47,6 @@ screen -S $SCREEN_NAME -X quit
 
 
 ## Script 2
-#Startar arma servern med specifika mods
 
 #!/bin/bash
 
@@ -61,7 +59,6 @@ screen -S armaserver -dm bash -c '
 
 ## Script 3
 
-#Kör minecraft start scriptet i en screen
 
 #!/bin/bash
 sleep 30
@@ -81,7 +78,6 @@ fi
 sleep 10
 
 ## Script 4
-# kollar spelare online på minecraft servern
 
 #!/bin/bash
 
@@ -116,7 +112,6 @@ else
 fi
 
 ## Script 5
-#Kollar om någon scrren session körs om inte så stängs VM av
 
 #!/bin/bash
 
