@@ -6,7 +6,7 @@ A game server that can start your vm and start the servers from just a webbsite.
 ## Script
 
 ### Script 1
-
+```bash
 #!/bin/bash
 
 # Namn på din screen-session
