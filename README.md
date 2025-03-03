@@ -2,6 +2,7 @@
 
 ## Description
 A game server that can start your vm and start the servers from just a webbsite.
+Bash scripts that starts the servers automaticly when the vm starts
 
 ## Script
 
